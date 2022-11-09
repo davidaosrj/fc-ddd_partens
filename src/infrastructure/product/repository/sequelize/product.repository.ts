@@ -9,6 +9,7 @@ export default class ProductRepository implements ProductRepositoryInterface {
       name: entity.name,
       price: entity.price,
     });
+    //console.log("entity " + entity.id);
   }
 
   async update(entity: Product): Promise<void> {
@@ -32,8 +33,9 @@ export default class ProductRepository implements ProductRepositoryInterface {
 
   async findAll(): Promise<Product[]> {
     const productModels = await ProductModel.findAll();
-    return productModels.map((productModel) =>
-      new Product(productModel.id, productModel.name, productModel.price)
+    return productModels.map(
+      (productModel) =>
+        new Product(productModel.id, productModel.name, productModel.price)
     );
   }
 }

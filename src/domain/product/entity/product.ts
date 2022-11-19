@@ -43,7 +43,7 @@ export default class Product extends Entity implements ProductInterface {
     if (this._id.length === 0) {
       this.notification.addError({
         context: "product",
-        message: "Id is required",
+        message: "id is required",
       });
       //throw new Error("Id is required");
     }

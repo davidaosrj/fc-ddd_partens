@@ -11,8 +11,8 @@ import ProductRepository from "../../../product/repository/sequelize/product.rep
 export const productRoute = express.Router();
 
 productRoute.post("/", async (req: Request, res: Response) => {
-  const usecase = new CreateProductUseCase(new ProductRepository());
   
+  const usecase = new CreateProductUseCase(new ProductRepository());
   try {
     const productDto = {
       name: req.body.name,

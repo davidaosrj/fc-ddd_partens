@@ -1,5 +1,7 @@
 import Entity from "../../@shared/entity/entity.abstract";
 import NotificationError from "../../@shared/notification/notification.error";
+import ProductYupValidator from "../../customer/validator/product.yup.validator";
+import ProductValidatorFactory from "../factory/product.validator.factory";
 import ProductInterface from "./product.interface";
 
 export default class Product extends Entity implements ProductInterface {
@@ -40,7 +42,8 @@ export default class Product extends Entity implements ProductInterface {
   }
 
   validate(): boolean {
-    if (this._id.length === 0) {
+    ProductValidatorFactory.create().validate(this);
+    /*if (this._id.length === 0) {
       this.notification.addError({
         context: "product",
         message: "id is required",
@@ -60,7 +63,7 @@ export default class Product extends Entity implements ProductInterface {
         message: "Price must be greater than zero",
       });
       //throw new Error("Price must be greater than zero");
-    }
+    }*/
     return true;
   }
 }
